@@ -1,0 +1,26 @@
+body{
+    background-color:royalblue;
+}
+
+img{
+    width: 300px;
+    height:230px;
+    display: block;
+    margin: 0 auto;
+
+}
+
+p {
+    color:aquamarine;
+    font-size: 30px;
+}
+
+h1 {
+    text-align: center;
+    margin:0 auto;
+}
+
+a {
+    font-size: 30px;
+    text-align: center;
+}
