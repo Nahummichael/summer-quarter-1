@@ -1,10 +1,10 @@
 name = input('who is you:')
-print('hello,'+ name + ", cool to meet you")
+print('hello, '+ name + ", im Python!")
 
 
 grade = input('what grade are you:')
-print('oh so your in' + grade + ',cool')
+print('ohhh you in, ' + grade + ', nice')
 
 
 age = input('how old are you:')
-print ('so your,' + age + ', yrs you old')
+print ( age + '! bro pack it up unc')
