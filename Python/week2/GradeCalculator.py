@@ -12,4 +12,4 @@ elif(60 <= numberGrade <= 69):
 elif(numberGrade < 60):
     letterGrade = "F"
 
-print("damn bro you got " + letterGrade)
+print("damn bro you got a " + letterGrade)
