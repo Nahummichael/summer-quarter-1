@@ -31,7 +31,7 @@ nav{
 }
 
 .logo{
-    width: 140px;
+    width: 200px;
 }
 
 nav ul li{
@@ -41,18 +41,36 @@ nav ul li{
 }
 
 nav ul li a {
-    color: #ffcc66;
+    color: #0066ff;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 30px;
     position: relative;
 }
 
 nav ul li a::after{
     content: '';
-    width: 100%;
+    width: 0%;
     height: 3px;
-    background: #cc6600;
+    background: #cc3300;
     position: absolute;
     left: 0;
     bottom: -6px;
+    transition: 0.5s;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+.header-text{
+    margin-top: 5%;
+    font-size: 30px;
+}
+.header-text h1{
+    font-size: 40px;
+    margin-top: 2%;
+}
+
+.header-text h1 span{
+    color: #000099;
 }
