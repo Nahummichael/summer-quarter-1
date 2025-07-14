@@ -77,7 +77,7 @@ nav ul li a:hover::after{
 
 /*-------------about-------------*/
 #about{
-    padding: 273px 0;
+    padding: 272px 0;
     color: #ff9900;
 }
 .row{
@@ -148,4 +148,15 @@ nav ul li a:hover::after{
 
 .tab-contents.active-tab{
     display: block;
+}
+
+/*---------services------------*/
+#services{
+    padding: 30px 0;
+}
+.services-list{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
 }
