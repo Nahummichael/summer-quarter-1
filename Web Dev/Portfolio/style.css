@@ -141,3 +141,11 @@ nav ul li a:hover::after{
      font-size: larger;
 
 }
+
+.tab-contents{
+    display: none;
+}
+
+.tab-contents.active-tab{
+    display: block;
+}
