@@ -299,3 +299,47 @@ nav ul li a:hover::after{
 .btn:hover{
     background: #6a0606;
 }
+
+/*-----------------contacts------------------*/
+
+.contact-left{
+    flex-basis: 35%;
+}
+
+.contact-right{
+    flex-basis: 60%;
+}
+
+.contact-left p{
+    margin-top: 30px;
+}
+.contact-left p i {
+    color:#6b1a1a;
+    margin-right: 15px;
+    font-size: 18px;
+    transition: transform 0.5s;
+}
+
+.contact-left p i:hover{
+    color: #e90c0c;
+    transform: translateY(-8px);
+}
+
+.social-icons{
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #6300a1;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+
+.social-icons a:hover{
+    color:#3600a1;
+    transform: translateX(-5px);
+}
