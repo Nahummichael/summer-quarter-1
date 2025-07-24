@@ -1,6 +1,6 @@
 import pgzrun
 
-# this is defining the game window's height and width, and the tile's size
+# this is defining the game window's height (12 tiles tall) and width(16 tiles wide), and the tile's size
 GRID_WIDTH = 16
 GRID_HEIGHT = 12
 GRID_SIZE = 50
