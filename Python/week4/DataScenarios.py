@@ -74,3 +74,31 @@ studentEmails = (
 
 for email in studentEmails:
     print(email)
+
+
+print("\nScenario 6: A shopping cart of groceries")
+print("best structure: list; because what your going change")
+grocerylist = [
+    "apples",
+    "Chicken breasts",
+    "Ground beef or turkey",
+    "Salmon fillet",
+    "Milk",
+    "Toilet paper",
+    "Whole wheat bread"
+]
+
+for item in grocerylist:
+    print(item)
+
+print("\nScenario 7; my own scenario: high score in a video game")
+print("best structure: list; because the highest scores are able to be changed")
+
+leaderboard = [
+    "James: 42,380",
+    "Tyler: 39,750",
+    "Ray: 37,200",
+]
+
+for score in leaderboard:
+    print(score)
