@@ -13,16 +13,16 @@ HEIGHT = GRID_HEIGHT * GRID_SIZE
 
 ########## 1.5 ##########
 MAP = ["WWWWWWWWWWWWWWWW",
-       "W              W",
+       "W           K  W",
        "W              W",
        "W  W  KG       W",
        "W  WWWWWWWWWW  W",
        "W              W",
        "W      P       W",
        "W  WWWWWWWWWW  W",
-       "W      GK   W  W",
+       "W      KK   W  W",
        "W              W",
-       "W              D",
+       "W  K           D",
        "WWWWWWWWWWWWWWWW"]
 #########################
 
@@ -47,13 +47,15 @@ def GetActorGridPos(actor):
 #########################
 
 
-########## 1.7, 3.0 ##########
+########## 1.7, 3.0, 3.3 ##########
 # This function creates an actor object from the Actor class to reperesent the player & keys
 def SetupGame():
     global player # Define player as a global var that be accessed anywhere in your code
     global keysToCollect # A var to store all the keys the player needs to collect
+    global gameOver
     player = Actor("player", anchor=("left", "top")) # Create a new Actor & set its anchor
     keysToCollect = []
+    gameOver = False
     for y in range(GRID_HEIGHT): # Loop over each grid position 
         for x in range(GRID_WIDTH):
             square = MAP[y][x] # Extracts the character from the MAP variable
@@ -85,17 +87,35 @@ def DrawActors():
     for key in keysToCollect:
         key.draw()
 #########################
+
+############# 3.5 ##############
+def drawGameOver():
+    # calculate and store the middle pos of the game screen
+    screenMiddle = (WIDTH / 2, HEIGHT / 2)
+    screen.draw.text("GAME OVER", midbottom = screenMiddle,
+                     fontsize = GRID_SIZE, color="indigo", owidth=1)
+
+####################################
+
+
+
 # draw() is 
 def draw():
     screen.clear()
     DrawBackground()
     DrawScenery()
     DrawActors()
+    if gameOver:
+        drawGameOver()
 #########################
 
 
 ########## 2.2, 3.2 ##########
 def MovePlayer(dx, dy):
+    global gameOver
+    if gameOver: #if the game ends
+        # restrict player movement
+        return
     (x, y) = GetActorGridPos(player)
     x += dx
     y += dy
@@ -105,6 +125,8 @@ def MovePlayer(dx, dy):
     elif square == "D":
         if len(keysToCollect) > 0: # If there are keys left to collect
             return  # do no let the player exit the door if there are keys left
+        else:
+            gameOver = True
     for key in keysToCollect:
         # Get the grid pos of the current key
         (keyX, keyY) = GetActorGridPos(key) 

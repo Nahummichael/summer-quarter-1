@@ -14,11 +14,11 @@
             <nav>
                 <img src="images/improved.png" class="logo">
                 <ul>
-                    <li><a href = "Home"> Home</a></li>
-                    <li><a href = "Home"> About</a></li>
-                    <li><a href = "Home"> Services</a></li>
-                    <li><a href = "Home"> Portfolio</a></li>
-                    <li><a href = "Home"> Contact</a></li>
+                    <li><a href = "#header"> Home</a></li>
+                    <li><a href = "#about"> About</a></li>
+                    <li><a href = "#services"> Services</a></li>
+                    <li><a href = "#portfolio"> Portfolio</a></li>
+                    <li><a href = "#contact"> Contact</a></li>
                 </ul>
             </nav>
             <div class="header-text">
@@ -152,7 +152,7 @@
     </div>
 </div>
 <!----------------contact---------------->
-<div id="contacts">
+<div id="contact">
     <div class="container">
         <div class="row">
             <div class="contact-left">
@@ -166,12 +166,13 @@
                 <a href="images/what.jpeg" download class="btn btn2">Download CV</a>
             </div>
             <div class="contact-right">
-                <form>
+                <form name="submit-to-google-sheet">
                     <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
                     <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
                     <button type="submit" class="btn btn2">Submit</button>
                 </form>
+                <span id="msg"></span>
             </div>
         </div>
     </div>
@@ -205,6 +206,25 @@
     
     var sidemenu = document.getElementById("sidemenu")
 
+</script>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwlPlbZcJtiCqE0niFkAKmLjofg3NLtqTNOpT4EMh_5PBH8mIAvRdQOP_YwLXaDSB3B8Q/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("msg")
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+        msg.innerHTML = "your information was sent successfully"
+        setTimeout(function(){
+            msg.innerHTML = ""
+        },5000)
+        form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
 </script>
 
 </body>

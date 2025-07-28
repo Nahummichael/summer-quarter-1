@@ -6,6 +6,10 @@
 
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     background: #0f004d;
     color: #980d0d;
@@ -41,7 +45,7 @@ nav ul li{
 }
 
 nav ul li a {
-    color: hsla(246, 76%, 16%, 0.847);
+    color: hsla(246, 96%, 50%, 0.847);
     text-decoration: none;
     font-size: 30px;
     position: relative;
@@ -383,4 +387,10 @@ form btn2{
 
 .copyright i{
     color:rgb(202, 1, 1);
+}
+
+#msg{
+    color: #6c0094;
+    margin-top: -40px;
+    display: block;
 }
