@@ -1,100 +1,133 @@
-import pgzrun
-
-# this is defining the game window's height (12 tiles tall) and width(16 tiles wide), and the tile's size
-GRID_WIDTH = 16
-GRID_HEIGHT = 12
-GRID_SIZE = 50
-
-#define the size of the game window
+########## 1.3 ##########
+# Import the Pygame module to start using its functions
+import pgzrun 
+# Define width and height of the game grid & size of each grid tile 
+GRID_WIDTH = 16 # defines How many squares wide the game board is 
+GRID_HEIGHT = 12 # defines How many squares tall the game board is 
+GRID_SIZE = 50 
+# Define the size of the game window
 WIDTH = GRID_WIDTH * GRID_SIZE
 HEIGHT = GRID_HEIGHT * GRID_SIZE
+#########################
 
+
+########## 1.5 ##########
 MAP = ["WWWWWWWWWWWWWWWW",
        "W              W",
        "W              W",
-       "W  W   KG      W",
+       "W  W  KG       W",
        "W  WWWWWWWWWW  W",
        "W              W",
-       "W      P       D",
+       "W      P       W",
        "W  WWWWWWWWWW  W",
-       "W       GK  W  W",
+       "W      GK   W  W",
        "W              W",
-       "W              W",
+       "W              D",
        "WWWWWWWWWWWWWWWW"]
+#########################
 
-# Convert grid (x, y) to screen pixel coordinates
+
+########## 1.4 ##########
+# This function converts a grid position to screen coordinates
 def GetScreenCoords(x, y):
     return (x * GRID_SIZE, y * GRID_SIZE)
-# Draw floor tiles
+# This function draws the dungeon floor as a background on screen
 def DrawBackground():
-    for y in range(GRID_HEIGHT):
-        for x in range(GRID_WIDTH):
-            screen.blit("floor1", GetScreenCoords(x, y))
+    for y in range (GRID_HEIGHT): # loop over each grid row
+        for x in range (GRID_WIDTH): # loop over each grid column
+            screen.blit("floor1", GetScreenCoords(x, y)) # Draws the named imaged at the given screen position
+#########################
 
-############# 2.1 ##############
 
-# this function takes in an actor as an argument &
-# returns the position of the actor on the grid
+########## 2.1 ##########
+# This function takes in an actor as an argument & 
+# returns the postion of the actor on the grid
 def GetActorGridPos(actor):
     return(round(actor.x / GRID_SIZE), round(actor.y / GRID_SIZE))
-###################################
-# Setup player
-############ 1.7 ###############
+#########################
+
+
+########## 1.7, 3.0 ##########
+# This function creates an actor object from the Actor class to reperesent the player & keys
 def SetupGame():
-    global player
-    player = Actor("player", anchor=("left", "top"))
-    for y in range(GRID_HEIGHT):
+    global player # Define player as a global var that be accessed anywhere in your code
+    global keysToCollect # A var to store all the keys the player needs to collect
+    player = Actor("player", anchor=("left", "top")) # Create a new Actor & set its anchor
+    keysToCollect = []
+    for y in range(GRID_HEIGHT): # Loop over each grid position 
         for x in range(GRID_WIDTH):
-            square = MAP[y][x]  # pad in case row is short
-            if square == "P":
-                player.pos = GetScreenCoords(x, y)
-# Draw walls and doors
+            square = MAP[y][x] # Extracts the character from the MAP variable
+            if square == "P": # Checks if the grid position is the player
+                player.pos = GetScreenCoords(x, y) # Set the position of the player
+            elif square == "K": 
+                # Create an actor for that key
+                key = Actor("key", anchor=("left", "top"))
+                # Set the key's pos to this grid location
+                key.pos = GetScreenCoords(x, y)
+                # Add this key to our list of keys
+                keysToCollect.append(key)
+#########################
+
+
+########## 1.6 ##########
 def DrawScenery():
     for y in range(GRID_HEIGHT):
         for x in range(GRID_WIDTH):
             square = MAP[y][x]
-            pos = GetScreenCoords(x, y)
             if square == "W":
-                screen.blit("wall", pos)
+                screen.blit("wall", GetScreenCoords(x, y))
             elif square == "D":
-                screen.blit("door", pos)
-            # You can add more tile types like "K", "G" here later
-# Main draw loop
+                screen.blit("door", GetScreenCoords(x, y))
 
-def drawActors():
+########## 1.8, 3.1 ##########
+def DrawActors():
     player.draw()
-
+    for key in keysToCollect:
+        key.draw()
+#########################
+# draw() is 
 def draw():
     screen.clear()
     DrawBackground()
     DrawScenery()
-    drawActors()
+    DrawActors()
+#########################
 
-########### 2.2 ###########
+
+########## 2.2, 3.2 ##########
 def MovePlayer(dx, dy):
     (x, y) = GetActorGridPos(player)
     x += dx
     y += dy
-    square = MAP [y][x]
-    if square == "W":
-        return
+    square = MAP[y][x]
+    if square == "W": # If the player tries to move into a wall
+        return # stop the function, dont let the player move
     elif square == "D":
-        return
+        if len(keysToCollect) > 0: # If there are keys left to collect
+            return  # do no let the player exit the door if there are keys left
+    for key in keysToCollect:
+        # Get the grid pos of the current key
+        (keyX, keyY) = GetActorGridPos(key) 
+        # Check if the new player pos mathces the pos of one of the keys
+        if x == keyX and y == keyY:
+            keysToCollect.remove(key)
+            break
     player.pos = GetScreenCoords(x,y)
-#####################################
+#########################
 
-########### 2.3 ##############
-# this function gets a key from the user and moves the player based on the input
+
+########## 2.3 ##########
+# This Function gets a key from the user and moves the player based on the input
 def on_key_down(key):
-    if key == keys.LEFT:
-        MovePlayer(-1,0) # Player moves left one on the grid
+    if key == keys.LEFT: 
+        MovePlayer(-1, 0) # Player moves left one on the grid
     elif key == keys.UP:
-        MovePlayer(0,-1)# Player moves up one on the grid
-    elif key == keys.RIGHT:
-        MovePlayer(1,0) # Player moves right one on the grid
+        MovePlayer(0, -1) # Player moves up one on the grid
+    elif key == keys.RIGHT: 
+        MovePlayer(1, 0) # Player moves right one on the grid
     elif key == keys.DOWN:
-        MovePlayer(0,1) # Player moves down one on the grid
-
-# Setup and run
+        MovePlayer(0, 1) # Player moves down one on the grid
+#########################
+# Start the Pygame 
 SetupGame()
 pgzrun.go()
