@@ -267,11 +267,11 @@ nav ul li a:hover::after{
 
 
 .layer p:hover{
-    color: #963900;
+    color: #ff7300;
 }
 
 .layer h3:hover{
-    color: #841200;
+    color: #ff7300;
 }
 
 .layer a:hover{
