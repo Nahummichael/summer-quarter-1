@@ -4,7 +4,7 @@ import pgzrun
 GRID_WIDTH = 16
 GRID_HEIGHT = 12
 GRID_SIZE = 50
-GUARDMOVEINTERVAL = 0.25
+GUARDMOVEINTERVAL = 0.2
 
 WIDTH = GRID_WIDTH * GRID_SIZE
 HEIGHT = GRID_HEIGHT * GRID_SIZE
@@ -12,17 +12,17 @@ HEIGHT = GRID_HEIGHT * GRID_SIZE
 
 ########## 1.5 ##########
 MAP = ["WWWWWWWWWWWWWWWW",
-       "W   K          W",
-       "W WWWWWW       W",
-       "W W    KW W W GW",
-       "W W WW WWWW W  W",
-       "W W  G    K W  W",
-       "W WWWW WWWWWW WW",
-       "W   P    W     W",
-       "WWW WWWW WWWWW W",
-       "W  K       W   W",
-       "W   WWWWWW     W",
-       "WWWWWWWWWWWDWWWW"]
+       "WWK           GW",
+       "WWWWWWWW  WWWWWW",
+       "W              W",
+       "W              W",
+       "W            WGW",
+       "W            WWW",
+       "W   P          W",
+       "W              W",
+       "W       WWWWWW W",
+       "W      WG    K W",
+       "WWWWWWWWWWWWWDWW"]
 #########################
 
 ########## 1.4 ##########
