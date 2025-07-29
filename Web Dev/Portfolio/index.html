@@ -8,6 +8,10 @@
     <script src="https://kit.fontawesome.com/91f11862c1.js" crossorigin="anonymous"></script>
 </head>
 <body>
+       <div class="curtain-rod"></div>
+
+  <div class="curtain left-curtain"></div>
+  <div class="curtain right-curtain"></div>
     <!--header section start-->
     <div id= "header">
         <div class = "container">
@@ -225,6 +229,18 @@
       })
       .catch(error => console.error('Error!', error.message))
   })
+</script>
+
+<script>
+ function openCurtains() {
+      document.body.classList.add('open');
+      setTimeout(() => {
+        document.body.style.overflow = 'auto';
+      }, 2000);
+    }
+
+    document.addEventListener('click', openCurtains, { once: true });
+  </script>
 </script>
 
 </body>
