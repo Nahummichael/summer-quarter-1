@@ -12,17 +12,17 @@ HEIGHT = GRID_HEIGHT * GRID_SIZE
 
 ########## 1.5 ##########
 MAP = ["WWWWWWWWWWWWWWWW",
-       "W           K  W",
-       "W              W",
-       "W  W  KG       W",
-       "W  WWWWWWWWWW  W",
-       "W              W",
-       "W      P       W",
-       "W  WWWWWWWWWW  W",
-       "W      GK   W  W",
-       "W              W",
-       "W  K           D",
-       "WWWWWWWWWWWWWWWW"]
+       "W   K          W",
+       "W WWWWWW       W",
+       "W W    KW W W GW",
+       "W W WW WWWW W  W",
+       "W W  G    K W  W",
+       "W WWWW WWWWWW WW",
+       "W   P    W     W",
+       "WWW WWWW WWWWW W",
+       "W  K       W   W",
+       "W   WWWWWW     W",
+       "WWWWWWWWWWWDWWWW"]
 #########################
 
 ########## 1.4 ##########
