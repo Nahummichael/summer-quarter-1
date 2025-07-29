@@ -309,7 +309,7 @@ nav ul li a:hover::after{
 }
 
 .services-list div:hover{
-    background: #7300ff69;
+    background: #6000d669;
     transform: translateY(-15px);
 }
 
@@ -363,14 +363,19 @@ nav ul li a:hover::after{
     font-weight: 900;
     margin-bottom: 20px;
     font-size: 80px;
+    transition: 0.5s;
 }
 
+.layer p{
+    transition: 0.5s;
+}
 
 .layer a {
     margin-top: 20px;
     color: #990000;
     text-decoration: none;
     font-size: 41px;
+    transition: 0.5s;
 }
 
 
@@ -385,6 +390,7 @@ nav ul li a:hover::after{
 .layer a:hover{
     font-size: 50px;
     transform: 1px;
+    color: orange;
 }
 
 .work:hover img{
@@ -452,7 +458,7 @@ nav ul li a:hover::after{
 }
 
 .social-icons a:hover{
-    color:#3600a1;
+    color:#a10000d3;
     transform: translateX(-5px);
 }
 
