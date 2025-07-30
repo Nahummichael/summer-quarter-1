@@ -42,11 +42,18 @@ def GetActorGridPos(actor):
 
 ########## 1.7, 3.0, 3.3 ##########
 def SetupGame():
-    global player, keysToCollect, gameOver, guards
+    global player 
+    global keysToCollect 
+    global gameOver 
+    global guards 
+    global playerWon
+    
+    
     player = Actor("player", anchor=("left", "top"))
     keysToCollect = []
     guards = []
     gameOver = False
+    playerWon = False
 
     for y in range(GRID_HEIGHT):
         for x in range(GRID_WIDTH):
@@ -88,6 +95,15 @@ def drawGameOver():
     screenMiddle = (WIDTH / 2, HEIGHT / 2)
     screen.draw.text("GAME OVER", midbottom=screenMiddle,
                      fontsize=GRID_SIZE, color="indigo", owidth=1)
+    
+    if playerWon:
+        screen.draw.text("YOU WIN!", midtop=screenMiddle,
+                     fontsize=GRID_SIZE, color="blue", owidth=1)
+    else:
+        screen.draw.text("YOU LOSE BUCKO", midtop=screenMiddle,
+                     fontsize=GRID_SIZE, color="green", owidth=1)
+    screen.draw.text("Press Space to try again", midtop=(WIDTH/2, HEIGHT/2 + GRID_SIZE),
+                     fontsize=GRID_SIZE/2, color="red", owidth=1)
 #########################
 
 ############# 4.1 ##################
@@ -129,9 +145,15 @@ def draw():
         drawGameOver()
 #########################
 
+def on_key_up(key):
+    if key == key.SPACE and gameOver:
+        SetupGame()
+
+
 ########## 2.2, 3.2 ##########
 def MovePlayer(dx, dy):
     global gameOver
+    global playerWon
     if gameOver:
         return
     (x, y) = GetActorGridPos(player)
@@ -146,6 +168,7 @@ def MovePlayer(dx, dy):
             return
         else:
             gameOver = True
+            playerWon = True
 
     for key in keysToCollect:
         (keyX, keyY) = GetActorGridPos(key)
