@@ -1,11 +1,12 @@
 ########## 1.3 ##########
 import pgzrun 
-
+import random
 GRID_WIDTH = 16
 GRID_HEIGHT = 12
 GRID_SIZE = 50
 GUARDMOVEINTERVAL = 0.2
 PlAYER_MOVE_INTERVAL =0.1
+BACKGROUND_SEED = 12345
 
 WIDTH = GRID_WIDTH * GRID_SIZE
 HEIGHT = GRID_HEIGHT * GRID_SIZE
@@ -34,6 +35,10 @@ def DrawBackground():
     for y in range(GRID_HEIGHT):
         for x in range(GRID_WIDTH):
             screen.blit("floor1", GetScreenCoords(x, y))
+            if x % 2 == y % 2:
+                screen.blit("floor1", GetScreenCoords(x,y))
+            else:
+                screen.blit("floor2", GetScreenCoords(x,y))
 #########################
 
 ########## 2.1 ##########
