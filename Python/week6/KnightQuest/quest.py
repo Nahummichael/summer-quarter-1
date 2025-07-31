@@ -32,6 +32,7 @@ def GetScreenCoords(x, y):
     return (x * GRID_SIZE, y * GRID_SIZE)
 
 def DrawBackground():
+    random.seed(BACKGROUND_SEED)
     for y in range(GRID_HEIGHT):
         for x in range(GRID_WIDTH):
             screen.blit("floor1", GetScreenCoords(x, y))
@@ -39,6 +40,11 @@ def DrawBackground():
                 screen.blit("floor2", GetScreenCoords(x,y))
             else:
                 screen.blit("floor1", GetScreenCoords(x,y))
+            n = random.randint(0,99)
+            if n < 5:
+                screen.blit("crack1", GetScreenCoords(x,y))
+            elif n < 10:
+                screen.blit("crack2", GetScreenCoords(x,y))
 #########################
 
 ########## 2.1 ##########
@@ -103,7 +109,7 @@ def drawGameOver():
                      fontsize=GRID_SIZE, color="indigo", owidth=1)
     
     if playerWon:
-        screen.draw.text("YOU WIN!", midtop=screenMiddle,
+        screen.draw.text("VICTORY ACHIEVED!", midtop=screenMiddle,
                      fontsize=GRID_SIZE, color="blue", owidth=1)
     else:
         screen.draw.text("YOU LOSE BUCKO", midtop=screenMiddle,
