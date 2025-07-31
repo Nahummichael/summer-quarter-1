@@ -36,9 +36,9 @@ def DrawBackground():
         for x in range(GRID_WIDTH):
             screen.blit("floor1", GetScreenCoords(x, y))
             if x % 2 == y % 2:
-                screen.blit("floor1", GetScreenCoords(x,y))
-            else:
                 screen.blit("floor2", GetScreenCoords(x,y))
+            else:
+                screen.blit("floor1", GetScreenCoords(x,y))
 #########################
 
 ########## 2.1 ##########
