@@ -5,6 +5,7 @@ GRID_WIDTH = 16
 GRID_HEIGHT = 12
 GRID_SIZE = 50
 GUARDMOVEINTERVAL = 0.2
+PlAYER_MOVE_INTERVAL =0.1
 
 WIDTH = GRID_WIDTH * GRID_SIZE
 HEIGHT = GRID_HEIGHT * GRID_SIZE
@@ -101,7 +102,7 @@ def drawGameOver():
                      fontsize=GRID_SIZE, color="blue", owidth=1)
     else:
         screen.draw.text("YOU LOSE BUCKO", midtop=screenMiddle,
-                     fontsize=GRID_SIZE, color="green", owidth=1)
+                     fontsize=GRID_SIZE, color="orange", owidth=1)
     screen.draw.text("Press Space to try again", midtop=(WIDTH/2, HEIGHT/2 + GRID_SIZE),
                      fontsize=GRID_SIZE/2, color="red", owidth=1)
 #########################
@@ -122,8 +123,10 @@ def MoveGuard(guard):
         guardY += 1
     elif playerY < guardY and MAP[guardY - 1][guardX] != "W":
         guardY -= 1
+    
+    animate(guard, pos=GetScreenCoords(guardX,guardY),
+            duration=GUARDMOVEINTERVAL)
 
-    guard.pos = GetScreenCoords(guardX, guardY)
 
     if guardX == playerX and guardY == playerY:
         gameOver = True
@@ -175,8 +178,8 @@ def MovePlayer(dx, dy):
         if x == keyX and y == keyY:
             keysToCollect.remove(key)
             break
-
-    player.pos = GetScreenCoords(x, y)
+    animate(player, pos=GetScreenCoords(x,y),
+                duration=PlAYER_MOVE_INTERVAL)
 #########################
 
 ########## 2.3 ##########
