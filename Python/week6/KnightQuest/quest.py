@@ -109,7 +109,7 @@ def drawGameOver():
                      fontsize=GRID_SIZE, color="indigo", owidth=1)
     
     if playerWon:
-        screen.draw.text("VICTORY ACHIEVED!", midtop=screenMiddle,
+        screen.draw.text("GOOD WORK TWIN!", midtop=screenMiddle,
                      fontsize=GRID_SIZE, color="blue", owidth=1)
     else:
         screen.draw.text("YOU LOSE BUCKO", midtop=screenMiddle,
