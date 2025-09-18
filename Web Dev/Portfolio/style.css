@@ -184,12 +184,12 @@ nav ul li a:hover::after{
 }
 
 .header-text h1 span{
-    color: #c50000;
+    color: #ff0000;
 }
 
 /*-------------about-------------*/
 #about{
-    padding: 468px 0;
+    padding: 540px 0;
     color: #e90c0c;
 }
 .row{
